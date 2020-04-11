@@ -31,7 +31,7 @@ int main() {
     }
 
     vector<int> color(n, -1);
-    bool isAns = true;
+    bool isPossible = true;
     function<void(int, int)> dfs = [&](int u, int c) {
       if (color[u] != -1) return;
       color[u] = c;
@@ -40,14 +40,14 @@ int main() {
           dfs(v, c^1);
         }
         if (color[v] != c^1) {
-          isAns = false;
+          isPossible= false;
           return;
         }
       }
     };
 
     for (int i = 0; i < n; ++i) dfs(i, 0);
-    if (!isAns) printf("IMPOSSIBLE");
+    if (!isPossible) printf("IMPOSSIBLE");
     else for (int& e: color) {
       assert(e != -1);
       printf("%c", e ? 'J':'C');
