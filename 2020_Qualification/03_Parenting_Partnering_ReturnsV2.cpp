@@ -19,11 +19,11 @@ int main() {
     vector<vector<int>> gph(n);
     for (int i = 0; i < n; ++i) {
       for (int j = 0; j < i; ++j) {
-        int st1 = job[i].first;
-        int ed1 = job[i].second-1;
-        int st2 = job[j].first;
-        int ed2 = job[j].second-1;
-        if (st2 <= ed1 && st1 <= ed2) {
+        int s1 = job[i].first;
+        int t1 = job[i].second;
+        int s2 = job[j].first;
+        int t2 = job[j].second;
+        if (max(s1, s2) < min(t1, t2)) {
           gph[i].push_back(j);
           gph[j].push_back(i);
         }
