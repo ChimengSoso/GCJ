@@ -18,7 +18,7 @@ int main() {
     printf("Case #%d: ", t);
     vector<vector<int>> gph(n);
     for (int i = 0; i < n; ++i) {
-      for (int j = 0; j < i; ++j) {
+      for (int j = i+1; j < n; ++j) {
         int s1 = job[i].first;
         int t1 = job[i].second;
         int s2 = job[j].first;
