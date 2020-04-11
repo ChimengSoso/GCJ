@@ -22,8 +22,8 @@ int main() {
       }
     }
     
-    int r = 0, c = 0;
-    for (int i = 0; i < n; ++i) r += nr[i], c += nc[i];
+    int r = accumulate(nr, nr+n, 0),
+        c = accumulate(nc, nc+n, 0);
     printf("Case #%d: %d %d %d\n", t, k, r, c);
   }
   return 0;
