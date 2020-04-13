@@ -41,7 +41,7 @@ int main() {
     const int INF = 2e9;
     const int NIL = 0;
 
-    vi d(n+1, a); d[1] = c, d[2] = b;
+    vi d(n+1, a); d[n-1] = b, d[n] = c;
     vector<vi> mat(n+1, vi(n+1, 0));
     for (int i = 1; i <= n; ++i) mat[i][i] = d[i];
 
@@ -116,14 +116,14 @@ int main() {
       return matching;
     };
 
-    for (int i = 1; i <= n; ++i) {
+    // fill from row of 'B' and 'C' a.k.a row (n-1)-th and n-th
+    for (int i = n; i >= 1; --i) {
       int matching = hopcroftKrap(i);
       assert(matching == n);
       copy(pairU.begin()+1, pairU.end(), mat[i].begin()+1);
     }
 
-    for (int i = 1; i <= n; ++i)
-      for (int j = 1; j <= n; ++j)
+    for (int i = 1; i <= n; ++i) for (int j = 1; j <= n; ++j)
         printf("%d%c", mat[i][j], " \n"[j == n]);
   }
   return 0;

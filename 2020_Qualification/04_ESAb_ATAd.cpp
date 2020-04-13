@@ -53,16 +53,12 @@ int main() {
           rev(bit);
           tog(bit);
         }
-      } else if (same != -1) {
-        // has only same index of value in bit
-        char new_same = read(same);
-             new_same = read(same);
-        if (new_same != bit[same]) tog(bit); // Or tog + rev
-      } else if (diff != -1) {
-        // has only diff index of value in bit
-        char new_diff = read(diff);
-             new_diff = read(diff);
-        if (new_diff != bit[diff]) rev(bit); // Or tog
+      } else {
+          // has only same or diff index of value in bit
+          int exist_idx = (same != -1 ? same : diff); 
+          char new_val = read(exist_idx);
+               new_val = read(exist_idx);
+          if (new_val != bit[exist_idx]) tog(bit);
       }
 
       for (int i = 0; i < 4 && s < e; ++i, ++s, --e) {
